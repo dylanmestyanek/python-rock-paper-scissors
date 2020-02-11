@@ -14,51 +14,40 @@ wins = 0
 losses = 0
 ties = 0
 
+win_txt = "Congrats! You win! :D"
+loss_txt = "Woops, you came close. Try again!"
+tie_txt = "You tie!"
+
+# Define a function that evaluates player move and cpu move, returns results
+def eval_moves(player_move, cpu_move):
+    winning_moves = {'r': 's', 's': 'p', 'p': 'r'}
+    if (player_move == cpu_move):
+        print(tie_txt)
+        return 0
+    elif winning_moves[player_move] == cpu_move:
+        print(win_txt)
+        return 1
+    else:
+        print(loss_txt)
+        return -1
+
 # LOOP
 while True:
-    # READ
     player_cmd = input("Choose your weapon: [r] Rock, [p] Paper, [s] Scissors or [q] Quit.\n")
     cpu_cmd = random.choice(choices)
     print(f'CPU chose: {cpu_cmd}\n')
-    # EVALUATE
-    # Computer picks r/p/s
-    # Compare player cmd to cpu cmd
-    if player_cmd == 'r':
-        if cpu_cmd == 'r':
-            print("You tie!")
+
+    if player_cmd in choices:
+        results = eval_moves(player_cmd, cpu_cmd)
+        if results == 0:
             ties += 1
-        elif cpu_cmd == 'p':
-            print("Woops, you lost! :(")
-            losses += 1
-        elif cpu_cmd == 's':
-            print("Congrats! You win! :D")
+        elif results == 1:
             wins += 1
-    elif player_cmd == 'p':
-        if cpu_cmd == 'r':
-            print("Congrats! You win! :D")
-            wins += 1
-        elif cpu_cmd == 'p':
-            print("You tie!")
-            ties += 1
-        elif cpu_cmd == 's':
-            print("Woops, you lost! :(")
+        elif results == -1:
             losses += 1
-    elif player_cmd == 's':
-        if cpu_cmd == 'r':
-            print("Woops, you lost! :(")
-            losses += 1
-        elif cpu_cmd == 'p':
-            print("Congrats! You win! :D")
-            wins += 1
-        elif cpu_cmd == 's':
-            print("You tie!")
-            ties += 1
     elif player_cmd == 'q':
         print("Thanks for playing, See you next time fam :^)")
         break
     else:
         print("Unknown Command! Please choose [r], [p], [s], or [q].")
-    # Update results based on win/loss/tie
-
-    # PRINT results and score
     print(f'\nWins: {wins}, Losses: {losses}, Ties: {ties}\n')
