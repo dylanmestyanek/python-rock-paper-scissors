@@ -17,10 +17,9 @@ ties = 0
 # LOOP
 while True:
     # READ
-    player_cmd = input("Choose your weapon: [r] Rock, [p] Paper, [s] Scissors or [q] Quit.")
+    player_cmd = input("Choose your weapon: [r] Rock, [p] Paper, [s] Scissors or [q] Quit.\n")
     cpu_cmd = random.choice(choices)
-    print(f'You chose: {player_cmd}')
-    print(f'CPU chose: {cpu_cmd}')
+    print(f'CPU chose: {cpu_cmd}\n')
     # EVALUATE
     # Computer picks r/p/s
     # Compare player cmd to cpu cmd
@@ -62,5 +61,4 @@ while True:
     # Update results based on win/loss/tie
 
     # PRINT results and score
-    print(f'CPU chose: {cpu_cmd}')
     print(f'\nWins: {wins}, Losses: {losses}, Ties: {ties}\n')
