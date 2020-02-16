@@ -50,4 +50,4 @@ while True:
         exit()
     else:
         print("Unknown Command! Please choose [r], [p], [s], or [q].")
-    print(f'\nWins: {wins}, Losses: {losses}, Ties: {ties}\n')
+    print(f'\nWins: {wins}, Losses: {losses}, Ties: {ties}\n------------------------------------------------------------------\n')
