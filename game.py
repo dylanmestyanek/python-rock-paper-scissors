@@ -47,7 +47,11 @@ while True:
             losses += 1
     elif player_cmd == 'q':
         print("Thanks for playing, See you next time fam :^)")
+        score_file = open('./score.txt', 'w')
+        score_file.write(f'\nWins: {wins}, Losses: {losses}, Ties: {ties}')
+        score_file.close()
         exit()
     else:
         print("Unknown Command! Please choose [r], [p], [s], or [q].")
+
     print(f'\nWins: {wins}, Losses: {losses}, Ties: {ties}\n------------------------------------------------------------------\n')
